@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "bundle": "parcel build ./index.js --target node --global handler --bundle-node-modules --no-source-maps --no-minify --out-dir ./bundles --out-file lambda.js"
+    "bundle": "parcel build ./index.js --target node --global handler --bundle-node-modules --no-source-maps --no-minify --out-dir . --out-file lambda.js"
   },
   "repository": {
     "type": "git",
