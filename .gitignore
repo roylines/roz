@@ -63,3 +63,7 @@ typings/
 .terraform
 *.tfvars
 *.tfstate
+
+lambda.js
+
+.cache
