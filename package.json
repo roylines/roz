@@ -24,5 +24,7 @@
   "devDependencies": {
     "jest-cli": "*"
   },
-  "dependencies": {}
+  "dependencies": {
+    "messaging-api-telegram": "0.7.11"
+  }
 }

@@ -1,4 +1,10 @@
+const {TelegramClient} = require('messaging-api-telegram');
+
+const sendMessage = async message => {
+  const {sendMessage} = TelegramClient.connect(process.env.TELEGRAM_TOKEN);
+  sendMessage(process.env.TELEGRAM_USER, message);
+};
+
 exports.handler = async () => {
-  console.log(`I'm watching you, Wazowski. Always watching. Always!`);
-  return {statusCode: 200};
+  await sendMessage(`I'm watching you, Wazowski. Always watching. Always!`);
 };

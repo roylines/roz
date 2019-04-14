@@ -68,7 +68,8 @@ resource "aws_lambda_function" "roz" {
 
   environment = {
     variables = {
-      TELEGRAM_TOKEN = "${var.telegram_token}"
+      TELEGRAM_TOKEN = "${var.telegram_token}",
+      TELEGRAM_USER = "${var.telegram_user}"
     }
   }
 }
