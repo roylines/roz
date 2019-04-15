@@ -64,6 +64,7 @@ typings/
 *.tfstate.backup
 *.tfvars
 *.tfstate
+*.plan
 
 lambda.js
 lambda.zip

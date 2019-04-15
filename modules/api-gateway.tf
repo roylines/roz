@@ -18,6 +18,12 @@ resource "aws_api_gateway_method" "roz" {
   authorization = "NONE"
 }
 
+resource "aws_api_gateway_stage" "prod" {
+  stage_name    = "production"
+  rest_api_id   = "${aws_api_gateway_rest_api.roz.id}"
+  deployment_id = "${aws_api_gateway_deployment.roz.id}"
+}
+
 resource "aws_api_gateway_integration" "lambda" {
   rest_api_id = "${aws_api_gateway_rest_api.roz.id}"
   resource_id = "${aws_api_gateway_method.roz.resource_id}"
@@ -34,14 +40,17 @@ resource "aws_api_gateway_deployment" "roz" {
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.roz.id}"
-  stage_name  = "prod"
 }
 
 resource "aws_lambda_permission" "roz" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.roz.0.arn}"
+  function_name = "${aws_lambda_function.roz.arn}"
   principal     = "apigateway.amazonaws.com"
 
-  source_arn = "${aws_api_gateway_deployment.roz.execution_arn}/*/*"
+  source_arn = "${aws_api_gateway_deployment.roz.execution_arn}*/*"
+}
+
+output url {
+  value = "${aws_api_gateway_stage.prod.invoke_url}/${aws_api_gateway_resource.roz.path_part}"
 }
