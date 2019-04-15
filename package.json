@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "bundle": "parcel build ./index.js --target node --global handler --bundle-node-modules --no-source-maps --no-minify --out-dir . --out-file lambda.js"
+    "bundle": "parcel build ./index.js --target node --global handler --bundle-node-modules --no-source-maps --no-minify --out-dir . --out-file lambda.js",
+    "deploy": "cd deployment; terraform apply --auto-approve"
   },
   "repository": {
     "type": "git",

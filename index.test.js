@@ -2,8 +2,6 @@ const {handler} = require('.');
 const {TelegramClient} = require('messaging-api-telegram');
 
 jest.mock('messaging-api-telegram');
-process.env.TELEGRAM_TOKEN = 'TELEGRAM_TOKEN';
-process.env.TELEGRAM_USER = 'TELEGRAM_USER';
 
 console.log = jest.fn();
 describe('handler', () => {

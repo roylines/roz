@@ -5,6 +5,8 @@ const sendMessage = async message => {
   sendMessage(process.env.TELEGRAM_USER, message);
 };
 
-exports.handler = async () => {
-  await sendMessage(`I'm watching you, Wazowski. Always watching. Always!`);
+exports.handler = async (evt, ctx) => {
+  console.log('Message received', {evt, ctx});
+  //await sendMessage(`I'm watching you, Wazowski. Always watching. Always!`);
+  return {statusCode: 200};
 };

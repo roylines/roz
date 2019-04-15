@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`handler should call connect correctly 1`] = `
-Array [
-  Array [
-    "TELEGRAM_TOKEN",
-  ],
-]
-`;
+exports[`handler should call connect correctly 1`] = `Array []`;
 
-exports[`handler should return expected 1`] = `undefined`;
+exports[`handler should return expected 1`] = `
+Object {
+  "statusCode": 200,
+}
+`;
