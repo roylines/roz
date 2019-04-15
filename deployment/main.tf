@@ -4,7 +4,7 @@ provider "aws" {
 
 variable "name" {
   description = "name to be used to scope all resources under"
-  default = "roz"
+  default     = "roz"
 }
 
 variable "telegram_token" {
@@ -14,4 +14,3 @@ variable "telegram_token" {
 variable "telegram_user" {
   description = "telegram user to send messages to"
 }
-

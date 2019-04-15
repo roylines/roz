@@ -1,5 +1,4 @@
-resource "random_pet" "roz" {
-}
+resource "random_pet" "roz" {}
 
 resource "aws_api_gateway_rest_api" "roz" {
   name        = "${var.name}-telegram"
@@ -26,7 +25,7 @@ resource "aws_api_gateway_integration" "lambda" {
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri = "${aws_lambda_function.roz.0.invoke_arn}"
+  uri                     = "${aws_lambda_function.roz.0.invoke_arn}"
 }
 
 resource "aws_api_gateway_deployment" "roz" {
@@ -46,21 +45,3 @@ resource "aws_lambda_permission" "roz" {
 
   source_arn = "${aws_api_gateway_deployment.roz.execution_arn}/*/*"
 }
-/*
-data "aws_acm_certificate" "roz" {
-  domain   = "*.robopho.be"
-  statuses = ["ISSUED"]
-}
-
-resource "aws_api_gateway_domain_name" "roz" {
-  certificate_arn = "${data.aws_acm_certificate.roz.arn}"
-  domain_name     = "roz.robopho.be"
-}
-
-resource "aws_api_gateway_base_path_mapping" "test" {
-  api_id      = "${aws_api_gateway_rest_api.roz.id}"
-  stage_name  = "${aws_api_gateway_deployment.roz.stage_name}"
-  domain_name = "${aws_api_gateway_domain_name.roz.domain_name}"
-}
-*/
-
