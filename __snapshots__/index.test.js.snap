@@ -1,9 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`handler should call connect correctly 1`] = `Array []`;
-
-exports[`handler should return expected 1`] = `
+exports[`handler should return 200 for known user 1`] = `
 Object {
   "statusCode": 200,
 }
+`;
+
+exports[`handler should return 403 for unknown user 1`] = `
+Object {
+  "statusCode": 403,
+}
+`;
+
+exports[`handler should send message for known user 1`] = `
+Array [
+  Array [
+    "TOKEN",
+  ],
+]
+`;
+
+exports[`handler should send message for known user 2`] = `
+Array [
+  Array [
+    "42",
+    "I'm watching you, Wazowski. Always watching. Always!",
+  ],
+]
 `;

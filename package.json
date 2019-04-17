@@ -10,7 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/roylines/roz.git"
   },
-  "keywords": ["roz", "bot", "lambda", "awsconfig"],
+  "keywords": [
+    "roz",
+    "bot",
+    "lambda",
+    "awsconfig"
+  ],
   "author": {
     "name": "Roy Lines",
     "url": "roy@roylines.co.uk"
@@ -24,6 +29,7 @@
     "jest-cli": "*"
   },
   "dependencies": {
+    "lambda-log": "^2.2.0",
     "messaging-api-telegram": "0.7.11"
   }
 }

@@ -12,9 +12,8 @@ variable "telegram_user" {
 }
 
 module "roz" {
-  source    = "./modules"
-  name = "${var.name}"
+  source         = "./modules"
+  name           = "${var.name}"
   telegram_token = "${var.telegram_token}"
-  telegram_user = "${var.telegram_user}"
+  telegram_user  = "${var.telegram_user}"
 }
-
