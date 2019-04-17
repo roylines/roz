@@ -1,30 +1,42 @@
 const {TelegramClient} = require('messaging-api-telegram');
-const {info} = require('lambda-log');
+const {error, info} = require('lambda-log');
+const delay = require('delay');
 
-const sendMessage = async message => {
-  info('sending telegram message', {message});
-  const {sendMessage} = TelegramClient.connect(process.env.TELEGRAM_TOKEN);
-  sendMessage(process.env.TELEGRAM_USER, message);
+const send = async ({messages}) => {
+  info('sending telegram messages', {messages});
+  const client = TelegramClient.connect(process.env.TELEGRAM_TOKEN);
+
+  for (const message of messages) {
+    await client.sendMessage(process.env.TELEGRAM_USER, message);
+    await delay(1200); // add a fake delay...
+  }
 };
 
 const isAuthorised = message => {
   return message.from.id == +process.env.TELEGRAM_USER;
 };
 
+const watchingMessages = message => [
+  `I'm watching you ${message.from.last_name}`,
+  'Always watching',
+  'Always!',
+];
+
 exports.handler = async evt => {
-  info('Message received', {evt});
+  try {
+    info('Message received', {evt});
 
-  // parse the message body
-  const {message} = JSON.parse(evt.body);
+    // parse the message body
+    const {message} = JSON.parse(evt.body);
 
-  // validate user
-  if (!isAuthorised(message)) return {statusCode: 403};
+    // validate user
+    if (!isAuthorised(message)) return {statusCode: 403};
 
-  // send a telegram message
-  await sendMessage(
-    `I'm watching you, ${message.from.last_name}. Always watching. Always!`,
-  );
-
-  // return 200
-  return {statusCode: 200};
+    // send a telegram message
+    await send({messages: watchingMessages(message)});
+    return {statusCode: 200};
+  } catch (e) {
+    error(e);
+    return {statusCode: 500};
+  }
 };

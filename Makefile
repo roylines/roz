@@ -1,7 +1,7 @@
 .PHONY: package plan deploy
 
 package:
-	parcel build ./index.js --target node --global handler --bundle-node-modules --no-source-maps --no-minify --out-dir . --out-file lambda.js
+	parcel build ./index.js --target node --global handler --bundle-node-modules --no-source-maps --no-minify --out-dir modules --out-file lambda.js
 
 plan: package
 	terraform init

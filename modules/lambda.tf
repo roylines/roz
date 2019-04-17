@@ -51,8 +51,8 @@ resource "aws_iam_role_policy_attachment" "roz" {
 
 data "archive_file" "roz" {
   type        = "zip"
-  source_file = "${path.module}/../lambda.js"
-  output_path = "${path.module}/../lambda.zip"
+  source_file = "${path.module}/lambda.js"
+  output_path = "${path.module}/lambda.zip"
 }
 
 resource "aws_lambda_function" "roz" {

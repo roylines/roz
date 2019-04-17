@@ -12,6 +12,12 @@ Object {
 }
 `;
 
+exports[`handler should return 500 for throws 1`] = `
+Object {
+  "statusCode": 500,
+}
+`;
+
 exports[`handler should send message for known user 1`] = `
 Array [
   Array [
@@ -24,7 +30,15 @@ exports[`handler should send message for known user 2`] = `
 Array [
   Array [
     "42",
-    "I'm watching you, Wazowski. Always watching. Always!",
+    "I'm watching you Wazowski",
+  ],
+  Array [
+    "42",
+    "Always watching",
+  ],
+  Array [
+    "42",
+    "Always!",
   ],
 ]
 `;

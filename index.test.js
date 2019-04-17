@@ -3,6 +3,7 @@ const {TelegramClient} = require('messaging-api-telegram');
 
 jest.mock('messaging-api-telegram');
 jest.mock('lambda-log');
+jest.mock('delay');
 
 describe('handler', () => {
   const mockTelegram = () => {
@@ -55,5 +56,16 @@ describe('handler', () => {
 
     expect(connect.mock.calls).toMatchSnapshot();
     expect(sendMessage.mock.calls).toMatchSnapshot();
+  });
+
+  it('should return 500 for throws', async () => {
+    const {sendMessage} = mockTelegram();
+    sendMessage.mockRejectedValue('ERROR');
+
+    const body = getMessage();
+
+    const response = await handler({body: JSON.stringify(body)});
+
+    expect(response).toMatchSnapshot({statusCode: 500});
   });
 });

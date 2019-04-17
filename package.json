@@ -26,10 +26,11 @@
   },
   "homepage": "https://github.com/roylines/roz#readme",
   "devDependencies": {
-    "jest-cli": "*"
+    "jest-cli": "24.7.1"
   },
   "dependencies": {
-    "lambda-log": "^2.2.0",
+    "delay": "4.2.0",
+    "lambda-log": "2.2.0",
     "messaging-api-telegram": "0.7.11"
   }
 }
