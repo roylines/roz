@@ -30,11 +30,11 @@ exports[`handler should send message for known user 2`] = `
 Array [
   Array [
     "42",
-    "I'm watching you Wazowski",
+    "I'm watching you...",
   ],
   Array [
     "42",
-    "Always watching",
+    "Always watching...",
   ],
   Array [
     "42",
