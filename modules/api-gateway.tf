@@ -69,4 +69,3 @@ resource "aws_api_gateway_stage" "prod" {
     command = "curl https://api.telegram.org/bot${var.telegram_token}/deleteWebhook"
   }
 }
-
