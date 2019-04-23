@@ -4,5 +4,5 @@ provider "aws" {
 }
 
 variable "name" {
-  default = "roz-compliance"
+  default = "roz-aws-config"
 }

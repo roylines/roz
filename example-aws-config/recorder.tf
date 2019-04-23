@@ -1,3 +1,8 @@
+// set up an sns topic for notifications 
+resource "aws_sns_topic" "aws_config" {
+  name = "${var.name}-topic"
+}
+
 // create the policy document for the configuration recorder
 data "aws_iam_policy_document" "aws_config" {
   policy_id = "${var.name}"
@@ -11,11 +16,6 @@ data "aws_iam_policy_document" "aws_config" {
       identifiers = ["config.amazonaws.com"]
     }
   }
-}
-
-// set up an sns topic for notifications 
-resource "aws_sns_topic" "aws_config" {
-  name = "${var.name}-topic"
 }
 
 // create the role for the configuration recorder
@@ -35,6 +35,7 @@ data "aws_iam_policy_document" "aws_config_sns" {
   }
 }
 
+// create the policy
 resource "aws_iam_policy" "aws_config_sns" {
   name   = "${data.aws_iam_policy_document.aws_config_sns.id}"
   policy = "${data.aws_iam_policy_document.aws_config_sns.json}"
