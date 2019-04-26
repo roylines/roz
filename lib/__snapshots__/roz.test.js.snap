@@ -18,27 +18,6 @@ Object {
 }
 `;
 
-exports[`handler should send message for known user 1`] = `
-Array [
-  Array [
-    "TOKEN",
-  ],
-]
-`;
+exports[`handler should send message for known user 1`] = `Array []`;
 
-exports[`handler should send message for known user 2`] = `
-Array [
-  Array [
-    "42",
-    "I'm watching you...",
-  ],
-  Array [
-    "42",
-    "Always watching...",
-  ],
-  Array [
-    "42",
-    "Always!",
-  ],
-]
-`;
+exports[`handler should send message for known user 2`] = `Array []`;
