@@ -1,44 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`handler should return 200 for known user 1`] = `
+exports[`handler from api gateway should reinvoke for known user 1`] = `
 Object {
   "statusCode": 200,
 }
 `;
 
-exports[`handler should return 403 for unknown user 1`] = `
+exports[`handler from api gateway should reinvoke for known user 2`] = `
+Array [
+  Array [
+    Object {
+      "FunctionName": "ARN",
+      "InvocationType": "Event",
+      "Payload": "{\\"text\\":\\"hello\\",\\"from\\":{\\"id\\":42}}",
+    },
+  ],
+]
+`;
+
+exports[`handler from api gateway should return 200 for unknown user 1`] = `
 Object {
-  "statusCode": 403,
+  "statusCode": 200,
 }
 `;
 
-exports[`handler should return 500 for throws 1`] = `
+exports[`handler from api gateway should return 500 for throws 1`] = `
 Object {
   "statusCode": 500,
 }
 `;
 
-exports[`handler should send message for known user 1`] = `
+exports[`handler from reinvoke should deal with break glass 1`] = `undefined`;
+
+exports[`handler from reinvoke should deal with break glass 2`] = `
 Array [
   Array [
-    "TOKEN",
+    Array [
+      Array [
+        "OK, I'm opening the bastion now.",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        "I've created the server. Just waiting for it to create...",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        "Right it's done. Don't do anything silly.",
+        "I'm watching you...",
+      ],
+    ],
   ],
 ]
 `;
 
-exports[`handler should send message for known user 2`] = `
+exports[`handler from reinvoke should deal with break glass 3`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`handler from reinvoke should deal with break glass 4`] = `Array []`;
+
+exports[`handler from reinvoke should deal with hello 1`] = `undefined`;
+
+exports[`handler from reinvoke should deal with hello 2`] = `
 Array [
   Array [
-    "42",
-    "I'm watching you...",
-  ],
-  Array [
-    "42",
-    "Always watching...",
-  ],
-  Array [
-    "42",
-    "Always!",
+    Array [
+      Array [
+        "I'm watching you...",
+        "Always watching...",
+        "Always!",
+      ],
+    ],
   ],
 ]
 `;

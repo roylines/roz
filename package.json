@@ -10,12 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/roylines/roz.git"
   },
-  "keywords": [
-    "roz",
-    "bot",
-    "lambda",
-    "awsconfig"
-  ],
+  "keywords": ["roz", "bot", "lambda", "awsconfig"],
   "author": {
     "name": "Roy Lines",
     "url": "roy@roylines.co.uk"
@@ -26,11 +21,13 @@
   },
   "homepage": "https://github.com/roylines/roz#readme",
   "devDependencies": {
+    "aws-sdk": "^2.441.0",
     "jest-cli": "24.7.1"
   },
   "dependencies": {
-    "delay": "4.2.0",
+    "await-sleep": "0.0.1",
     "lambda-log": "2.2.0",
-    "messaging-api-telegram": "0.7.11"
+    "messaging-api-telegram": "0.7.11",
+    "random-int": "2.0.0"
   }
 }
