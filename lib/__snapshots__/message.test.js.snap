@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`message it should send expected rand 0 1`] = `
+Array [
+  Array [
+    "TOKEN",
+  ],
+]
+`;
+
+exports[`message it should send expected rand 0 2`] = `
+Array [
+  Array [
+    "42",
+    "MESSAGE1-1",
+  ],
+  Array [
+    "42",
+    "MESSAGE1-2",
+  ],
+]
+`;
+
+exports[`message it should send expected rand 0 3`] = `
+Array [
+  Array [
+    0,
+    1,
+  ],
+  Array [
+    200,
+    1500,
+  ],
+  Array [
+    200,
+    1500,
+  ],
+]
+`;
+
+exports[`message it should send expected rand 1 1`] = `
+Array [
+  Array [
+    "TOKEN",
+  ],
+]
+`;
+
+exports[`message it should send expected rand 1 2`] = `
+Array [
+  Array [
+    "42",
+    "MESSAGE2-1",
+  ],
+  Array [
+    "42",
+    "MESSAGE2-2",
+  ],
+]
+`;
+
+exports[`message it should send expected rand 1 3`] = `
+Array [
+  Array [
+    0,
+    1,
+  ],
+  Array [
+    200,
+    1500,
+  ],
+  Array [
+    200,
+    1500,
+  ],
+  Array [
+    0,
+    1,
+  ],
+  Array [
+    200,
+    1500,
+  ],
+  Array [
+    200,
+    1500,
+  ],
+]
+`;

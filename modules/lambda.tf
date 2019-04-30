@@ -40,6 +40,38 @@ data "aws_iam_policy_document" "roz" {
       "arn:aws:logs:*:*:*",
     ]
   }
+
+  // to set desired capacity
+  statement {
+    actions = [
+      "autoscaling:SetDesiredCapacity"
+    ]
+
+    effect    = "Allow"
+    resources = ["${aws_autoscaling_group.bastion.arn}"]
+  }
+  
+  // to check capacity
+  statement {
+    actions = [
+      "autoscaling:DescribeAutoScalingGroups",
+    ]
+
+    effect    = "Allow"
+    resources = ["*"]
+  }
+
+  // to obtain ipaddresses of bastion
+  statement {
+    actions = [
+      "ec2:DescribeInstances",
+    ]
+
+    effect    = "Allow"
+    resources = ["*"]
+  }
+  
+
   // to invoke self recursively
   statement {
     actions = ["lambda:InvokeFunction"]
@@ -84,8 +116,8 @@ resource "aws_lambda_function" "roz" {
 
   environment = {
     variables = {
-      TELEGRAM_TOKEN = "${var.telegram_token}"
-      TELEGRAM_USER  = "${var.telegram_user}"
+      TELEGRAM_TOKEN             = "${var.telegram_token}"
+      TELEGRAM_USER              = "${var.telegram_user}"
       BASTION_AUTO_SCALING_GROUP = "${aws_autoscaling_group.bastion.name}"
     }
   }
