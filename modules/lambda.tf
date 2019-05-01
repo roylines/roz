@@ -44,13 +44,13 @@ data "aws_iam_policy_document" "roz" {
   // to set desired capacity
   statement {
     actions = [
-      "autoscaling:SetDesiredCapacity"
+      "autoscaling:SetDesiredCapacity",
     ]
 
     effect    = "Allow"
     resources = ["${aws_autoscaling_group.bastion.arn}"]
   }
-  
+
   // to check capacity
   statement {
     actions = [
@@ -70,7 +70,6 @@ data "aws_iam_policy_document" "roz" {
     effect    = "Allow"
     resources = ["*"]
   }
-  
 
   // to invoke self recursively
   statement {
@@ -80,6 +79,16 @@ data "aws_iam_policy_document" "roz" {
     resources = [
       "arn:aws:lambda:*:*:function:${var.name}",
     ]
+  }
+
+  // to update frequency on rule
+  statement {
+    actions = [
+      "events:putRule",
+    ]
+
+    effect    = "Allow"
+    resources = ["${aws_cloudwatch_event_rule.every.arn}"]
   }
 }
 
@@ -116,6 +125,7 @@ resource "aws_lambda_function" "roz" {
 
   environment = {
     variables = {
+      NAME                       = "${var.name}"
       TELEGRAM_TOKEN             = "${var.telegram_token}"
       TELEGRAM_USER              = "${var.telegram_user}"
       BASTION_AUTO_SCALING_GROUP = "${aws_autoscaling_group.bastion.name}"
