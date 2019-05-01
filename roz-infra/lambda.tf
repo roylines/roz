@@ -22,6 +22,11 @@ resource "aws_iam_role" "roz" {
   assume_role_policy = "${data.aws_iam_policy_document.assume.json}"
 }
 
+// pull in the bastion
+data "aws_autoscaling_group" "bastion" {
+  name = "${var.name}-bastion"
+}
+
 // create a policy document for iam permissions for the lambda
 data "aws_iam_policy_document" "roz" {
   policy_id = "${var.name}"
@@ -48,7 +53,7 @@ data "aws_iam_policy_document" "roz" {
     ]
 
     effect    = "Allow"
-    resources = ["${aws_autoscaling_group.bastion.arn}"]
+    resources = ["${data.aws_autoscaling_group.bastion.arn}"]
   }
 
   // to check capacity
@@ -104,11 +109,20 @@ resource "aws_iam_role_policy_attachment" "roz" {
   policy_arn = "${aws_iam_policy.roz.arn}"
 }
 
+// package the node modules
+resource "null_resource" "roz" {
+  provisioner "local-exec" {
+    working_dir = "${path.module}/../roz"
+    command = "parcel build ./index.js --target node --global handler --bundle-node-modules --no-source-maps --no-minify --out-dir ${path.module} --out-file lambda.js"
+  }
+}
+
 // archive the bundled lambda javascript file
 data "archive_file" "roz" {
   type        = "zip"
   source_file = "${path.module}/lambda.js"
   output_path = "${path.module}/lambda.zip"
+  depends_on = ["null_resource.roz"]
 }
 
 // create the lambda
@@ -128,7 +142,7 @@ resource "aws_lambda_function" "roz" {
       NAME                       = "${var.name}"
       TELEGRAM_TOKEN             = "${var.telegram_token}"
       TELEGRAM_USER              = "${var.telegram_user}"
-      BASTION_AUTO_SCALING_GROUP = "${aws_autoscaling_group.bastion.name}"
+      BASTION_AUTO_SCALING_GROUP = "${data.aws_autoscaling_group.bastion.name}"
     }
   }
 }

@@ -1,15 +1,10 @@
-.PHONY: package plan deploy
+deploy-sample-bastion:
+	cd sample-bastion && terraform init && terraform apply -auto-approve
 
-package:
-	parcel build ./index.js --target node --global handler --bundle-node-modules --no-source-maps --no-minify --out-dir modules --out-file lambda.js
+prepare-node:
+	cd roz && npm prune && npm install
 
-plan: package
-	terraform init
-	terraform plan -out=terraform.plan
+deploy-roz:
+	cd roz-infra && terraform init && terraform apply -auto-approve
 
-deploy: plan
-	terraform apply -auto-approve terraform.plan
-
-simulate-break-glass:
-	docker run --rm -v "$PWD":/var/task lambci/lambda:nodejs8.10 index.handler '{"message_id":103,"chat":{"id":594734320,"first_name":"Mike","last_name":"Woz","username":"woz","type":"private"},"date":1556519621,"text":"break glass"}'
-
+all: deploy-sample-bastion prepare-node deploy-roz
