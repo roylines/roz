@@ -15,6 +15,7 @@ data "aws_ami" "latest" {
   }
 }
 
+// add a security group allowing 22 over TCP
 resource "aws_security_group" "bastion" {
   name        = "${var.name}-bastion"
   description = "security group used for bastion servers"
@@ -38,6 +39,7 @@ resource "aws_security_group" "bastion" {
   }
 }
 
+// create a launch template for the bastion ec2 instance
 resource "aws_launch_template" "bastion" {
   name_prefix          = "${var.name}-bastion"
   image_id             = "${data.aws_ami.latest.id}"
@@ -50,6 +52,7 @@ resource "aws_launch_template" "bastion" {
   }
 }
 
+// create an autoscaling group to manage creation and destruction of the bastion
 resource "aws_autoscaling_group" "bastion" {
   name               = "${var.name}-bastion"
   availability_zones = ["us-east-1a"]
