@@ -12,9 +12,11 @@ const handle = async () => {
     // bastion is open
     const now = Date.now();
     const launched = new Date(instance.launched);
-    // check to see if it's been open for more than 3 minutes
-    if (now - launched > 3 * 60000) {
-      await send([[`Bastion has been open for too long.`, `I'm closing it`]]);
+    // check to see if it's been open for more than 2 minutes
+    if (now - launched > 2 * 60000) {
+      await send([
+        [`⏰ Bastion has been open for too long.`, `I'm closing it`],
+      ]);
       await autoscaling.set({capacity: 0});
       await send([[`Close requested`, `Watching. Always watching 👀`]]);
     }
