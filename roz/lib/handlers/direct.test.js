@@ -2,6 +2,7 @@ const {handle} = require('./direct');
 const helloHandler = require('./hello');
 const breakGlassHandler = require('./breakglass');
 
+jest.mock('lambda-log');
 jest.mock('./hello');
 jest.mock('./breakglass');
 
