@@ -10,15 +10,23 @@
     "type": "git",
     "url": "git+https://github.com/roylines/roz.git"
   },
-  "keywords": [
-    "roz",
-    "bot",
-    "lambda",
-    "awsconfig"
-  ],
+  "keywords": ["roz", "bot", "lambda", "awsconfig"],
   "author": {
     "name": "Roy Lines",
     "url": "roy@roylines.co.uk"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "testEnvironment": "node"
   },
   "license": "MIT",
   "bugs": {
@@ -26,7 +34,7 @@
   },
   "homepage": "https://github.com/roylines/roz#readme",
   "devDependencies": {
-    "aws-sdk": "^2.441.0",
+    "aws-sdk": "2.441.0",
     "jest-cli": "24.7.1"
   },
   "dependencies": {

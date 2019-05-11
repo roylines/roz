@@ -4,13 +4,15 @@ const AWS = require('aws-sdk');
 // create the helpers
 const autoscaling = new AWS.AutoScaling({apiVersion: '2011-01-01'});
 const ec2 = new AWS.EC2();
-const cloudwatchevents = new AWS.CloudWatchEvents();
+const lambda = new AWS.Lambda();
 
 // inspect the auto-scaling group
-const get = async ({name}) => {
-  info('getting auto-scaling group', name);
+const get = async () => {
+  info('getting auto-scaling group');
 
-  const autoscalingParams = {AutoScalingGroupNames: [name]};
+  const autoscalingParams = {
+    AutoScalingGroupNames: [process.env.BASTION_AUTO_SCALING_GROUP],
+  };
   const {
     AutoScalingGroups: [{DesiredCapacity: capacity, Instances: instances}],
   } = await autoscaling.describeAutoScalingGroups(autoscalingParams).promise();
@@ -47,11 +49,11 @@ const get = async ({name}) => {
 };
 
 // set the desired capacity of the auto-scaling group
-const set = async ({name, capacity}) => {
-  info('setting desired capacity', {name, capacity});
+const set = async ({capacity}) => {
+  info('setting desired capacity', {capacity});
 
   const autoscalingParams = {
-    AutoScalingGroupName: name,
+    AutoScalingGroupName: process.env.BASTION_AUTO_SCALING_GROUP,
     DesiredCapacity: capacity,
   };
 
@@ -59,15 +61,17 @@ const set = async ({name, capacity}) => {
   info('set desired capacity', ret);
 };
 
-const setPolling = async ({frequency}) => {
-  info('setting desired capacity', {frequency});
+// invoke the lambda
+const invoke = async ({arn, message}) => {
+  info('invoking lambda', {arn});
 
-  const rule = {
-    Name: process.env.NAME,
-    ScheduleExpression: `rate(${frequency})`,
+  const params = {
+    FunctionName: arn,
+    InvocationType: 'Event',
+    Payload: JSON.stringify(message),
   };
 
-  await cloudwatchevents.putRule(rule).promise();
+  await lambda.invoke(params).promise();
 };
 
 module.exports = {
@@ -75,7 +79,7 @@ module.exports = {
     get,
     set,
   },
-  polling: {
-    set: setPolling,
+  lambda: {
+    invoke,
   },
 };

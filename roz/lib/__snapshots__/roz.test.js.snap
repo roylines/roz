@@ -1,18 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`handler from api gateway should reinvoke for known user 1`] = `
+exports[`handler from api gateway should invoke for known user 1`] = `
 Object {
   "statusCode": 200,
 }
 `;
 
-exports[`handler from api gateway should reinvoke for known user 2`] = `
+exports[`handler from api gateway should invoke for known user 2`] = `
 Array [
   Array [
     Object {
-      "FunctionName": "ARN",
-      "InvocationType": "Event",
-      "Payload": "{\\"text\\":\\"hello\\",\\"from\\":{\\"id\\":42}}",
+      "arn": "ARN",
+      "message": Object {
+        "from": Object {
+          "id": 42,
+        },
+        "text": "hello",
+      },
     },
   ],
 ]
@@ -44,15 +48,16 @@ Array [
   Array [
     Array [
       Array [
-        "I've created the server. Just waiting for it to create...",
+        "Request made, waiting for it to be ready...",
       ],
     ],
   ],
   Array [
     Array [
       Array [
-        "Right it's done. Don't do anything silly.",
-        "I'm watching you...",
+        "Right it's done! The bastion is open on undefined",
+        "Don't do anything silly, I'm watching you...",
+        "👀",
       ],
     ],
   ],
@@ -61,11 +66,19 @@ Array [
 
 exports[`handler from reinvoke should deal with break glass 3`] = `
 Array [
-  Array [],
+  Array [
+    Object {
+      "capacity": 1,
+    },
+  ],
 ]
 `;
 
-exports[`handler from reinvoke should deal with break glass 4`] = `Array []`;
+exports[`handler from reinvoke should deal with break glass 4`] = `
+Array [
+  Array [],
+]
+`;
 
 exports[`handler from reinvoke should deal with hello 1`] = `undefined`;
 
