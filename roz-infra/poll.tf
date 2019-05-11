@@ -1,7 +1,7 @@
 resource "aws_cloudwatch_event_rule" "every" {
   name                = "${var.name}"
   description         = "Calls roz on an increment"
-  schedule_expression = "rate(1 minute)"
+  schedule_expression = "rate(2 minutes)"
 }
 
 resource "aws_cloudwatch_event_target" "roz" {
