@@ -111,6 +111,10 @@ resource "aws_iam_role_policy_attachment" "roz" {
 
 // package the node modules
 resource "null_resource" "roz" {
+  // make it run every time
+  triggers {
+    build_number = "${timestamp()}"
+  }
   provisioner "local-exec" {
     working_dir = "${path.module}/../roz"
     command = "parcel build ./index.js --target node --global handler --bundle-node-modules --no-source-maps --no-minify --out-dir ${path.module} --out-file lambda.js"
