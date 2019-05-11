@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`telegram handler should invoke for known user 1`] = `
+Object {
+  "statusCode": 200,
+}
+`;
+
+exports[`telegram handler should invoke for known user 2`] = `
+Array [
+  Array [
+    Object {
+      "arn": "ARN",
+      "message": Object {
+        "from": Object {
+          "id": 42,
+        },
+        "text": "hello",
+      },
+    },
+  ],
+]
+`;
+
+exports[`telegram handler should warn and return 200 for unknown user 1`] = `
+Object {
+  "statusCode": 200,
+}
+`;

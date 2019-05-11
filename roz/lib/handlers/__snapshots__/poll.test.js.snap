@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`poll handler should do nothing if instances has been running for a short time 1`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`poll handler should do nothing if instances is not running 1`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`poll handler should do nothing if no instances returned 1`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`poll handler should set capacity to 0 if instances has been running for a long time 1`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`poll handler should set capacity to 0 if instances has been running for a long time 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Array [
+          "Bastion has been open for too long.",
+          "I'm closing it",
+        ],
+      ],
+    ],
+    Array [
+      Array [
+        Array [
+          "Close requested",
+          "Watching. Always watching 👀",
+        ],
+      ],
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`poll handler should set capacity to 0 if instances has been running for a long time 3`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "capacity": 0,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

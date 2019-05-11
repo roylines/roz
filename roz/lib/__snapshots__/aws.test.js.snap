@@ -2,7 +2,6 @@
 
 exports[`aws autoscaling get can call get (instance not ready) 1`] = `
 Object {
-  "capacity": 42,
   "instance": null,
 }
 `;
@@ -43,7 +42,6 @@ Array [
 
 exports[`aws autoscaling get can call get (instance ready) 1`] = `
 Object {
-  "capacity": 42,
   "instance": Object {
     "id": "IID",
     "ipaddress": "IPADDRESS",
@@ -105,7 +103,6 @@ Array [
 
 exports[`aws autoscaling get can call get (no instances) 1`] = `
 Object {
-  "capacity": 42,
   "instance": null,
 }
 `;

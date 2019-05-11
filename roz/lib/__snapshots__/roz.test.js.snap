@@ -1,97 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`handler from api gateway should invoke for known user 1`] = `
-Object {
-  "statusCode": 200,
-}
-`;
+exports[`roz direct should call handler correctly: DIRECT 1`] = `"DIRECT"`;
 
-exports[`handler from api gateway should invoke for known user 2`] = `
-Array [
-  Array [
-    Object {
-      "arn": "ARN",
-      "message": Object {
-        "from": Object {
-          "id": 42,
-        },
-        "text": "hello",
-      },
-    },
-  ],
-]
-`;
-
-exports[`handler from api gateway should return 200 for unknown user 1`] = `
-Object {
-  "statusCode": 200,
-}
-`;
-
-exports[`handler from api gateway should return 500 for throws 1`] = `
+exports[`roz direct should return 500 if handler throws 1`] = `
 Object {
   "statusCode": 500,
 }
 `;
 
-exports[`handler from reinvoke should deal with break glass 1`] = `undefined`;
-
-exports[`handler from reinvoke should deal with break glass 2`] = `
-Array [
-  Array [
+exports[`roz direct should return 500 if handler throws 2`] = `
+[MockFunction] {
+  "calls": Array [
     Array [
-      Array [
-        "OK, I'm opening the bastion now.",
-      ],
+      "FAILED DIRECT",
     ],
   ],
-  Array [
-    Array [
-      Array [
-        "Request made, waiting for it to be ready...",
-      ],
-    ],
-  ],
-  Array [
-    Array [
-      Array [
-        "Right it's done! The bastion is open on undefined",
-        "Don't do anything silly, I'm watching you...",
-        "👀",
-      ],
-    ],
-  ],
-]
-`;
-
-exports[`handler from reinvoke should deal with break glass 3`] = `
-Array [
-  Array [
+  "results": Array [
     Object {
-      "capacity": 1,
+      "type": "return",
+      "value": undefined,
     },
   ],
-]
+}
 `;
 
-exports[`handler from reinvoke should deal with break glass 4`] = `
-Array [
-  Array [],
-]
+exports[`roz poll should call handler correctly: POLL 1`] = `"POLL"`;
+
+exports[`roz poll should return 500 if handler throws 1`] = `
+Object {
+  "statusCode": 500,
+}
 `;
 
-exports[`handler from reinvoke should deal with hello 1`] = `undefined`;
-
-exports[`handler from reinvoke should deal with hello 2`] = `
-Array [
-  Array [
+exports[`roz poll should return 500 if handler throws 2`] = `
+[MockFunction] {
+  "calls": Array [
     Array [
-      Array [
-        "I'm watching you...",
-        "Always watching...",
-        "Always!",
-      ],
+      "FAILED POLL",
     ],
   ],
-]
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`roz telegram message should call handler correctly: TELEGRAM 1`] = `"TELEGRAM"`;
+
+exports[`roz telegram message should return 500 if handler throws 1`] = `
+Object {
+  "statusCode": 500,
+}
+`;
+
+exports[`roz telegram message should return 500 if handler throws 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "FAILED TELEGRAM",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
 `;

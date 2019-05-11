@@ -1,4 +1,4 @@
-const {send} = require('./message');
+const {send} = require('./telegram');
 const random = require('random-int');
 const {TelegramClient} = require('messaging-api-telegram');
 

@@ -14,7 +14,7 @@ const get = async () => {
     AutoScalingGroupNames: [process.env.BASTION_AUTO_SCALING_GROUP],
   };
   const {
-    AutoScalingGroups: [{DesiredCapacity: capacity, Instances: instances}],
+    AutoScalingGroups: [{Instances: instances}],
   } = await autoscaling.describeAutoScalingGroups(autoscalingParams).promise();
 
   let instance = null;
@@ -43,7 +43,7 @@ const get = async () => {
     }
   }
 
-  const ret = {capacity, instance};
+  const ret = {instance};
   info('got auto-scaling group', ret);
   return ret;
 };
