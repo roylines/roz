@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`breakglass handler should set capacity and send notifications (ready first time) 1`] = `
+Array [
+  Array [
+    Object {
+      "capacity": 1,
+    },
+  ],
+]
+`;
+
+exports[`breakglass handler should set capacity and send notifications (ready first time) 2`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`breakglass handler should set capacity and send notifications (ready first time) 3`] = `
+Array [
+  Array [
+    Array [
+      Array [
+        "OK, I'm opening the bastion now.",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        "Request made, waiting for it to be ready...",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        "Right it's done! The bastion is open on undefined",
+        "Don't do anything silly, I'm watching you...",
+        "👀",
+      ],
+    ],
+  ],
+]
+`;
+
+exports[`breakglass handler should set capacity and send notifications (ready first time) 4`] = `Array []`;
+
+exports[`breakglass handler should wait for ready 1`] = `
+Array [
+  Array [
+    Object {
+      "capacity": 1,
+    },
+  ],
+]
+`;
+
+exports[`breakglass handler should wait for ready 2`] = `
+Array [
+  Array [],
+  Array [],
+  Array [],
+]
+`;
+
+exports[`breakglass handler should wait for ready 3`] = `
+Array [
+  Array [
+    Array [
+      Array [
+        "OK, I'm opening the bastion now.",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        "Request made, waiting for it to be ready...",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        "Still waiting...",
+      ],
+      Array [
+        "One moment...",
+      ],
+      Array [
+        "Tum-tee-tum...",
+      ],
+      Array [
+        "Shouldn't be long now...",
+      ],
+      Array [
+        "It's not quite ready...",
+      ],
+      Array [
+        "Nearly there...",
+      ],
+      Array [
+        "Only a couple of minutes more...",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        "Still waiting...",
+      ],
+      Array [
+        "One moment...",
+      ],
+      Array [
+        "Tum-tee-tum...",
+      ],
+      Array [
+        "Shouldn't be long now...",
+      ],
+      Array [
+        "It's not quite ready...",
+      ],
+      Array [
+        "Nearly there...",
+      ],
+      Array [
+        "Only a couple of minutes more...",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        "Right it's done! The bastion is open on undefined",
+        "Don't do anything silly, I'm watching you...",
+        "👀",
+      ],
+    ],
+  ],
+]
+`;
+
+exports[`breakglass handler should wait for ready 4`] = `
+Array [
+  Array [
+    Object {
+      "max": 10000,
+      "min": 5000,
+    },
+  ],
+  Array [
+    Object {
+      "max": 10000,
+      "min": 5000,
+    },
+  ],
+]
+`;
