@@ -2,13 +2,13 @@
 
 exports[`roz direct should call handler correctly: DIRECT 1`] = `"DIRECT"`;
 
-exports[`roz direct should return 500 if handler throws 1`] = `
+exports[`roz direct should return 200 if handler throws 1`] = `
 Object {
-  "statusCode": 500,
+  "statusCode": 200,
 }
 `;
 
-exports[`roz direct should return 500 if handler throws 2`] = `
+exports[`roz direct should return 200 if handler throws 2`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -26,13 +26,13 @@ exports[`roz direct should return 500 if handler throws 2`] = `
 
 exports[`roz poll should call handler correctly: POLL 1`] = `"POLL"`;
 
-exports[`roz poll should return 500 if handler throws 1`] = `
+exports[`roz poll should return 200 if handler throws 1`] = `
 Object {
-  "statusCode": 500,
+  "statusCode": 200,
 }
 `;
 
-exports[`roz poll should return 500 if handler throws 2`] = `
+exports[`roz poll should return 200 if handler throws 2`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -50,13 +50,13 @@ exports[`roz poll should return 500 if handler throws 2`] = `
 
 exports[`roz telegram message should call handler correctly: TELEGRAM 1`] = `"TELEGRAM"`;
 
-exports[`roz telegram message should return 500 if handler throws 1`] = `
+exports[`roz telegram message should return 200 if handler throws 1`] = `
 Object {
-  "statusCode": 500,
+  "statusCode": 200,
 }
 `;
 
-exports[`roz telegram message should return 500 if handler throws 2`] = `
+exports[`roz telegram message should return 200 if handler throws 2`] = `
 [MockFunction] {
   "calls": Array [
     Array [

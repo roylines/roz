@@ -13,10 +13,10 @@ jest.mock('lambda-log');
 describe('roz', () => {
   beforeEach(() => jest.resetAllMocks());
   describe('telegram message', () => {
-    it('should return 500 if handler throws', async () => {
+    it('should return 200 if handler throws', async () => {
       telegramHandler.handle.mockRejectedValue('FAILED TELEGRAM');
       const response = await handler({body: 'BODY'}, 'CONTEXT');
-      expect(response).toMatchSnapshot({statusCode: 500});
+      expect(response).toMatchSnapshot({statusCode: 200});
       expect(error).toMatchSnapshot();
     });
     it('should call handler correctly', async () => {
@@ -27,13 +27,13 @@ describe('roz', () => {
   });
 
   describe('poll', () => {
-    it('should return 500 if handler throws', async () => {
+    it('should return 200 if handler throws', async () => {
       pollHandler.handle.mockRejectedValue('FAILED POLL');
       const response = await handler(
         {'detail-type': 'Scheduled Event'},
         'CONTEXT',
       );
-      expect(response).toMatchSnapshot({statusCode: 500});
+      expect(response).toMatchSnapshot({statusCode: 200});
       expect(error).toMatchSnapshot();
     });
     it('should call handler correctly', async () => {
@@ -47,10 +47,10 @@ describe('roz', () => {
   });
 
   describe('direct', () => {
-    it('should return 500 if handler throws', async () => {
+    it('should return 200 if handler throws', async () => {
       directHandler.handle.mockRejectedValue('FAILED DIRECT');
       const response = await handler({}, 'CONTEXT');
-      expect(response).toMatchSnapshot({statusCode: 500});
+      expect(response).toMatchSnapshot({statusCode: 200});
       expect(error).toMatchSnapshot();
     });
     it('should call handler correctly', async () => {

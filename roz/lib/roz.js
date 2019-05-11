@@ -18,6 +18,7 @@ exports.handler = async (evt, context) => {
     return await directHandler.handle(evt, context);
   } catch (e) {
     error(e);
-    return {statusCode: 500};
+    // always return 200 to stop telegram from resending
+    return {statusCode: 200};
   }
 };
