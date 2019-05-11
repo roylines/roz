@@ -24,16 +24,25 @@ Array [
 exports[`message it should send expected rand 0 3`] = `
 Array [
   Array [
+    "42",
+    "typing",
+  ],
+]
+`;
+
+exports[`message it should send expected rand 0 4`] = `
+Array [
+  Array [
     0,
     1,
   ],
   Array [
-    200,
-    1500,
+    800,
+    2500,
   ],
   Array [
-    200,
-    1500,
+    800,
+    2500,
   ],
 ]
 `;
@@ -62,28 +71,37 @@ Array [
 exports[`message it should send expected rand 1 3`] = `
 Array [
   Array [
-    0,
-    1,
+    "42",
+    "typing",
   ],
-  Array [
-    200,
-    1500,
-  ],
-  Array [
-    200,
-    1500,
-  ],
+]
+`;
+
+exports[`message it should send expected rand 1 4`] = `
+Array [
   Array [
     0,
     1,
   ],
   Array [
-    200,
-    1500,
+    800,
+    2500,
   ],
   Array [
-    200,
-    1500,
+    800,
+    2500,
+  ],
+  Array [
+    0,
+    1,
+  ],
+  Array [
+    800,
+    2500,
+  ],
+  Array [
+    800,
+    2500,
   ],
 ]
 `;

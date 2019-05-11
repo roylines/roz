@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index should call roz 1`] = `
+Array [
+  Array [
+    "REQ",
+  ],
+]
+`;
+
+exports[`index should call roz 2`] = `"RESP"`;

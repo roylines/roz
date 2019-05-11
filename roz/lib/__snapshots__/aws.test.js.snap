@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`aws autoscaling get can call get (instance not ready) 1`] = `
+Object {
+  "instance": null,
+}
+`;
+
+exports[`aws autoscaling get can call get (instance not ready) 2`] = `
+Array [
+  Array [],
+  Array [
+    Object {
+      "AutoScalingGroupNames": Array [
+        "ASG",
+      ],
+    },
+  ],
+  Array [],
+  Array [
+    Object {
+      "AutoScalingGroupNames": Array [
+        "ASG",
+      ],
+    },
+  ],
+]
+`;
+
+exports[`aws autoscaling get can call get (instance not ready) 3`] = `
+Array [
+  Array [],
+  Array [
+    Object {
+      "InstanceIds": Array [
+        "IID",
+      ],
+    },
+  ],
+]
+`;
+
+exports[`aws autoscaling get can call get (instance ready) 1`] = `
+Object {
+  "instance": Object {
+    "id": "IID",
+    "ipaddress": "IPADDRESS",
+    "launched": "LAUNCHTIME",
+    "status": "STATUS",
+  },
+}
+`;
+
+exports[`aws autoscaling get can call get (instance ready) 2`] = `
+Array [
+  Array [],
+  Array [
+    Object {
+      "AutoScalingGroupNames": Array [
+        "ASG",
+      ],
+    },
+  ],
+  Array [],
+  Array [
+    Object {
+      "AutoScalingGroupNames": Array [
+        "ASG",
+      ],
+    },
+  ],
+  Array [],
+  Array [
+    Object {
+      "AutoScalingGroupNames": Array [
+        "ASG",
+      ],
+    },
+  ],
+]
+`;
+
+exports[`aws autoscaling get can call get (instance ready) 3`] = `
+Array [
+  Array [],
+  Array [
+    Object {
+      "InstanceIds": Array [
+        "IID",
+      ],
+    },
+  ],
+  Array [],
+  Array [
+    Object {
+      "InstanceIds": Array [
+        "IID",
+      ],
+    },
+  ],
+]
+`;
+
+exports[`aws autoscaling get can call get (no instances) 1`] = `
+Object {
+  "instance": null,
+}
+`;
+
+exports[`aws autoscaling get can call get (no instances) 2`] = `
+Array [
+  Array [],
+  Array [
+    Object {
+      "AutoScalingGroupNames": Array [
+        "ASG",
+      ],
+    },
+  ],
+]
+`;
+
+exports[`aws autoscaling set should set desired capacity 1`] = `
+Array [
+  Array [
+    Object {
+      "AutoScalingGroupName": "ASG",
+      "DesiredCapacity": 42,
+    },
+  ],
+]
+`;
+
+exports[`aws lambda invoke should call invoke correctly 1`] = `
+Array [
+  Array [
+    Object {
+      "FunctionName": "ARN",
+      "InvocationType": "Event",
+      "Payload": "{\\"a\\":\\"A\\"}",
+    },
+  ],
+]
+`;
