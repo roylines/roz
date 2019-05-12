@@ -1,4 +1,5 @@
 const {send} = require('./telegram');
+const {ssm} = require('./aws');
 const random = require('random-int');
 const {TelegramClient} = require('messaging-api-telegram');
 
@@ -6,11 +7,11 @@ jest.mock('await-sleep');
 jest.mock('lambda-log');
 jest.mock('messaging-api-telegram');
 jest.mock('random-int');
+jest.mock('./aws');
 
 describe('message', () => {
   const mockTelegram = () => {
-    process.env.TELEGRAM_TOKEN = 'TOKEN';
-    process.env.TELEGRAM_USER = '42';
+    ssm.getTelegramSecrets.mockResolvedValue({token: 'TOKEN', user: '42'});
     const connect = {sendMessage: jest.fn(), sendChatAction: jest.fn()};
     connect.sendMessage.mockResolvedValue();
     connect.sendChatAction.mockResolvedValue();

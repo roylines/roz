@@ -22,7 +22,8 @@ resource "aws_api_gateway_stage" "prod" {
   // configure the webhook in telegram
   provisioner "local-exec" {
     command = "curl -F 'url=${aws_api_gateway_stage.prod.invoke_url}/${aws_api_gateway_resource.roz.path_part}' https://api.telegram.org/bot$TELEGRAM_TOKEN/setWebhook"
-  environment = {
+
+    environment = {
       TELEGRAM_TOKEN = "${var.telegram_token}"
     }
   }
@@ -31,6 +32,7 @@ resource "aws_api_gateway_stage" "prod" {
   provisioner "local-exec" {
     when    = "destroy"
     command = "curl https://api.telegram.org/bot$TELEGRAM_TOKEN/deleteWebhook"
+
     environment = {
       TELEGRAM_TOKEN = "${var.telegram_token}"
     }

@@ -20,4 +20,3 @@ resource "random_pet" "roz" {}
 locals {
   name = "roz-${random_pet.roz.id}"
 }
-
