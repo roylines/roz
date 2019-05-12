@@ -1,6 +1,6 @@
 // create assumed role for lambda
 data "aws_iam_policy_document" "assume" {
-  policy_id = "${var.name}-assume"
+  policy_id = "${local.name}-assume"
 
   statement {
     actions = ["sts:AssumeRole"]
@@ -18,7 +18,7 @@ data "aws_iam_policy_document" "assume" {
 
 // create a role for the lambda to run under
 resource "aws_iam_role" "roz" {
-  name               = "${var.name}"
+  name               = "${local.name}"
   assume_role_policy = "${data.aws_iam_policy_document.assume.json}"
 }
 

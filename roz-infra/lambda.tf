@@ -21,7 +21,7 @@ data "archive_file" "roz" {
 
 // create the lambda
 resource "aws_lambda_function" "roz" {
-  function_name                  = "${var.name}"
+  function_name                  = "${local.name}"
   filename                       = "${data.archive_file.roz.output_path}"
   role                           = "${aws_iam_role.roz.arn}"
   handler                        = "lambda.handler"
@@ -33,7 +33,7 @@ resource "aws_lambda_function" "roz" {
 
   environment = {
     variables = {
-      NAME                       = "${var.name}"
+      NAME                       = "${local.name}"
       TELEGRAM_TOKEN             = "${var.telegram_token}"
       TELEGRAM_USER              = "${var.telegram_user}"
       BASTION_AUTO_SCALING_GROUP = "${data.aws_autoscaling_group.bastion.name}"

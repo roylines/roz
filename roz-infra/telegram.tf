@@ -1,6 +1,3 @@
-// create a random pet based id for pseudo-secret path
-resource "random_pet" "roz" {}
-
 // create a REST resource with a pseudo-secret path
 resource "aws_api_gateway_resource" "roz" {
   rest_api_id = "${aws_api_gateway_rest_api.roz.id}"

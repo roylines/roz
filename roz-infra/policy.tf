@@ -1,11 +1,11 @@
 // pull in the bastion
 data "aws_autoscaling_group" "bastion" {
-  name = "${var.name}-bastion"
+  name = "roz-bastion"
 }
 
 // create a policy document for iam permissions for the lambda
 data "aws_iam_policy_document" "roz" {
-  policy_id = "${var.name}"
+  policy_id = "${local.name}"
 
   // to store logs
   statement {
@@ -58,13 +58,13 @@ data "aws_iam_policy_document" "roz" {
     effect  = "Allow"
 
     resources = [
-      "arn:aws:lambda:*:*:function:${var.name}",
+      "arn:aws:lambda:*:*:function:${local.name}",
     ]
   }
 }
 
 // create the policy
 resource "aws_iam_policy" "roz" {
-  name   = "${var.name}"
+  name   = "${local.name}"
   policy = "${data.aws_iam_policy_document.roz.json}"
 }
