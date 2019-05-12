@@ -10,7 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/roylines/roz.git"
   },
-  "keywords": ["roz", "bot", "lambda", "awsconfig"],
+  "keywords": [
+    "roz",
+    "bot",
+    "lambda",
+    "awsconfig"
+  ],
   "author": {
     "name": "Roy Lines",
     "url": "roy@roylines.co.uk"
