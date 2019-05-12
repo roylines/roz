@@ -142,3 +142,32 @@ Array [
   ],
 ]
 `;
+
+exports[`aws ssm getTelegramSecrets should cache 1`] = `
+Object {
+  "token": "TOKEN",
+  "user": "USER",
+}
+`;
+
+exports[`aws ssm getTelegramSecrets should call getParameters correctly 1`] = `
+Object {
+  "token": "TOKEN",
+  "user": "USER",
+}
+`;
+
+exports[`aws ssm getTelegramSecrets should call getParameters correctly 2`] = `
+Array [
+  Array [],
+  Array [
+    Object {
+      "Names": Array [
+        "NAME-telegram-token",
+        "NAME-telegram-user",
+      ],
+      "WithDecryption": true,
+    },
+  ],
+]
+`;

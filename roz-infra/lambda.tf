@@ -34,8 +34,6 @@ resource "aws_lambda_function" "roz" {
   environment = {
     variables = {
       NAME                       = "${local.name}"
-      TELEGRAM_TOKEN             = "${var.telegram_token}"
-      TELEGRAM_USER              = "${var.telegram_user}"
       BASTION_AUTO_SCALING_GROUP = "${data.aws_autoscaling_group.bastion.name}"
     }
   }

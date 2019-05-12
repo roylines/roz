@@ -1,4 +1,4 @@
-const {lambda} = require('../aws');
+const {lambda, ssm} = require('../aws');
 const {warn, info} = require('lambda-log');
 
 // handles requests from telegram. Must return 200 quickly, and reinvoke ourself for actual processing.
@@ -7,7 +7,8 @@ const handle = async ({body}, {invokedFunctionArn: arn}) => {
   // parse the body into JSON
   const {message} = JSON.parse(body);
   // check the user is authorised
-  if (!message || message.from.id != +process.env.TELEGRAM_USER) {
+  const {user} = await ssm.getTelegramSecrets();
+  if (!message || message.from.id != +user) {
     warn('unauthorised user', {message});
     return {statusCode: 200}; // we will return 200 anyway, otherwise telegram will retry
   }

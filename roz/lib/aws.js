@@ -1,10 +1,12 @@
 const {info} = require('lambda-log');
+const {find} = require('lodash');
 const AWS = require('aws-sdk');
 
 // create the helpers
 const autoscaling = new AWS.AutoScaling({apiVersion: '2011-01-01'});
 const ec2 = new AWS.EC2();
 const lambda = new AWS.Lambda();
+const ssm = new AWS.SSM();
 
 // inspect the auto-scaling group
 const get = async () => {
@@ -74,6 +76,31 @@ const invoke = async ({arn, message}) => {
   await lambda.invoke(params).promise();
 };
 
+// get parameters
+let telegramSecretsCache;
+
+const getTelegramSecrets = async () => {
+  info('getting ssm parameters');
+  // check the cache
+  if (telegramSecretsCache) return telegramSecretsCache;
+
+  const token = `${process.env.Name}-telegram-token`;
+  const user = `${process.env.Name}-telegram-user`;
+
+  const params = {
+    Names: [token, user],
+    WithDecryption: true,
+  };
+  const {Parameters: parameters} = await ssm.getParameters(params).promise();
+
+  telegramSecretsCache = {
+    token: find(parameters, {Name: token}).Value,
+    user: find(parameters, {Name: user}).Value,
+  };
+
+  return telegramSecretsCache;
+};
+
 module.exports = {
   autoscaling: {
     get,
@@ -81,5 +108,8 @@ module.exports = {
   },
   lambda: {
     invoke,
+  },
+  ssm: {
+    getTelegramSecrets,
   },
 };

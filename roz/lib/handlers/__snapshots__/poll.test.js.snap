@@ -30,7 +30,7 @@ exports[`poll handler should set capacity to 0 if instances has been running for
     Array [
       Array [
         Array [
-          "Bastion has been open for too long.",
+          "⏰ Bastion has been open for too long.",
           "I'm closing it",
         ],
       ],

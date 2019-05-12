@@ -61,6 +61,17 @@ data "aws_iam_policy_document" "roz" {
       "arn:aws:lambda:*:*:function:${local.name}",
     ]
   }
+
+  // to get telegram secrets
+  statement {
+    actions = ["ssm:GetParameters"]
+    effect  = "Allow"
+
+    resources = [
+      "${aws_ssm_parameter.telegram_token.arn}",
+      "${aws_ssm_parameter.telegram_user.arn}",
+    ]
+  }
 }
 
 // create the policy

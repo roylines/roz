@@ -3,6 +3,7 @@ const {autoscaling} = require('../aws');
 const {send} = require('../telegram');
 
 jest.mock('../aws');
+jest.mock('lambda-log');
 jest.mock('../telegram');
 
 describe('poll handler', () => {

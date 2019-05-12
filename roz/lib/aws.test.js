@@ -119,4 +119,36 @@ describe('aws', () => {
       });
     });
   });
+  describe('ssm', () => {
+    describe('getTelegramSecrets', () => {
+      it('should call getParameters correctly', async () => {
+        AWS.SSM()
+          .getParameters()
+          .promise.mockResolvedValue({
+            Parameters: [
+              {
+                Name: 'NAME-telegram-token',
+                Value: 'TOKEN',
+              },
+              {
+                Name: 'NAME-telegram-user',
+                Value: 'USER',
+              },
+            ],
+          });
+
+        process.env.Name = 'NAME';
+        //call set
+        const response = await aws.ssm.getTelegramSecrets();
+        expect(response).toMatchSnapshot({token: 'TOKEN', user: 'USER'});
+        expect(AWS.SSM().getParameters.mock.calls).toMatchSnapshot();
+      });
+      it('should cache', async () => {
+        jest.resetAllMocks();
+        //call set
+        const response = await aws.ssm.getTelegramSecrets();
+        expect(response).toMatchSnapshot({token: 'TOKEN', user: 'USER'});
+      });
+    });
+  });
 });
