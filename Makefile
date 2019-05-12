@@ -9,8 +9,8 @@ deploy-roz:
 
 destroy:
 	cd roz-infra && terraform destroy -auto-approve
-	rm lambda.js
-	rm lambda.zip
+	rm roz-infra/lambda.js
+	rm roz-infra/lambda.zip
 	cd sample-bastion && terraform destroy -auto-approve
 
 all: deploy-sample-bastion prepare-node deploy-roz
