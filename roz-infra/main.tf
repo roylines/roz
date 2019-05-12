@@ -12,3 +12,12 @@ variable "telegram_token" {
 variable "telegram_user" {
   description = "telegram user to send messages to"
 }
+
+// create a random pet based id for pseudo-secret path
+resource "random_pet" "roz" {}
+
+// create a local name based upon the pet
+locals {
+  name = "roz-${random_pet.roz.id}"
+}
+
