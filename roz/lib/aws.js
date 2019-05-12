@@ -84,8 +84,8 @@ const getTelegramSecrets = async () => {
   // check the cache
   if (telegramSecretsCache) return telegramSecretsCache;
 
-  const token = `${process.env.Name}-telegram-token`;
-  const user = `${process.env.Name}-telegram-user`;
+  const token = `${process.env.NAME}-telegram-token`;
+  const user = `${process.env.NAME}-telegram-user`;
 
   const params = {
     Names: [token, user],

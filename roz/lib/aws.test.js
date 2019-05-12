@@ -137,7 +137,7 @@ describe('aws', () => {
             ],
           });
 
-        process.env.Name = 'NAME';
+        process.env.NAME = 'NAME';
         //call set
         const response = await aws.ssm.getTelegramSecrets();
         expect(response).toMatchSnapshot({token: 'TOKEN', user: 'USER'});
