@@ -144,10 +144,40 @@ describe('aws', () => {
         expect(AWS.SSM().getParameters.mock.calls).toMatchSnapshot();
       });
       it('should cache', async () => {
-        jest.resetAllMocks();
         //call set
         const response = await aws.ssm.getTelegramSecrets();
         expect(response).toMatchSnapshot({token: 'TOKEN', user: 'USER'});
+      });
+    });
+    describe('getInitialised', () => {
+      it('should call getParameter correctly', async () => {
+        AWS.SSM()
+          .getParameter()
+          .promise.mockResolvedValue({
+            Parameter: {
+              Value: 'false',
+            },
+          });
+
+        process.env.NAME = 'NAME';
+        //call set
+        const response = await aws.ssm.getInitialised();
+        expect(response).toEqual(false);
+        expect(AWS.SSM().getParameter.mock.calls).toMatchSnapshot();
+      });
+      it('should cache', async () => {
+        //call set
+        const response = await aws.ssm.getInitialised();
+        expect(response).toEqual(false);
+      });
+    });
+    describe('setInitialised', () => {
+      it('should call putParameter correctly', async () => {
+        process.env.NAME = 'NAME';
+        await aws.ssm.setInitialised();
+        expect(AWS.SSM().putParameter.mock.calls).toMatchSnapshot();
+        const response = await aws.ssm.getInitialised();
+        expect(response).toEqual(true);
       });
     });
   });

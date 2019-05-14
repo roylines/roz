@@ -143,6 +143,18 @@ Array [
 ]
 `;
 
+exports[`aws ssm getInitialised should call getParameter correctly 1`] = `
+Array [
+  Array [],
+  Array [
+    Object {
+      "Name": "NAME-initialised",
+      "WithDecryption": false,
+    },
+  ],
+]
+`;
+
 exports[`aws ssm getTelegramSecrets should cache 1`] = `
 Object {
   "token": "TOKEN",
@@ -167,6 +179,19 @@ Array [
         "NAME-telegram-user",
       ],
       "WithDecryption": true,
+    },
+  ],
+]
+`;
+
+exports[`aws ssm setInitialised should call putParameter correctly 1`] = `
+Array [
+  Array [
+    Object {
+      "Name": "NAME-initialised",
+      "Overwrite": true,
+      "Type": "String",
+      "Value": "true",
     },
   ],
 ]

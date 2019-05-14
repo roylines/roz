@@ -77,12 +77,12 @@ const invoke = async ({arn, message}) => {
 };
 
 // get parameters
-let telegramSecretsCache;
+let __telegramSecretsCache;
 
 const getTelegramSecrets = async () => {
   info('getting ssm parameters');
   // check the cache
-  if (telegramSecretsCache) return telegramSecretsCache;
+  if (__telegramSecretsCache) return __telegramSecretsCache;
 
   const token = `${process.env.NAME}-telegram-token`;
   const user = `${process.env.NAME}-telegram-user`;
@@ -93,12 +93,43 @@ const getTelegramSecrets = async () => {
   };
   const {Parameters: parameters} = await ssm.getParameters(params).promise();
 
-  telegramSecretsCache = {
+  __telegramSecretsCache = {
     token: find(parameters, {Name: token}).Value,
     user: find(parameters, {Name: user}).Value,
   };
 
-  return telegramSecretsCache;
+  return __telegramSecretsCache;
+};
+
+let __initialisedCache;
+const getInitialised = async () => {
+  info('getting ssm parameters');
+  // check the cache
+  if (__initialisedCache != undefined) return __initialisedCache;
+
+  const name = `${process.env.NAME}-initialised`;
+  const params = {
+    Name: name,
+    WithDecryption: false,
+  };
+  const {
+    Parameter: {Value: value},
+  } = await ssm.getParameter(params).promise();
+
+  __initialisedCache = value == 'true';
+  return __initialisedCache;
+};
+
+const setInitialised = async () => {
+  const name = `${process.env.NAME}-initialised`;
+  const params = {
+    Name: name,
+    Type: 'String',
+    Value: 'true',
+    Overwrite: true,
+  };
+  await ssm.putParameter(params).promise();
+  __initialisedCache = true;
 };
 
 module.exports = {
@@ -111,5 +142,7 @@ module.exports = {
   },
   ssm: {
     getTelegramSecrets,
+    getInitialised,
+    setInitialised,
   },
 };

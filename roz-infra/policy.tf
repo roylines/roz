@@ -72,6 +72,16 @@ data "aws_iam_policy_document" "roz" {
       "${aws_ssm_parameter.telegram_user.arn}",
     ]
   }
+  
+  // to get and set greeting state
+  statement {
+    actions = ["ssm:GetParameter", "ssm:PutParameter"]
+    effect  = "Allow"
+
+    resources = [
+      "${aws_ssm_parameter.initialised.arn}"
+    ]
+  }
 }
 
 // create the policy

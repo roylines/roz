@@ -1,10 +1,15 @@
-const {autoscaling} = require('../aws');
+const {autoscaling, ssm} = require('../aws');
 const {send} = require('../telegram');
 const {info} = require('lambda-log');
 
 // this is a call from the scheduled poll. Check to see if any bastions are open
 const handle = async () => {
   info('scheduled event received, checking if the bastion is open');
+  const initialised = await ssm.getInitialised();
+  if (!initialised) {
+    await ssm.setInitialised();
+    await send([["Hello. I'm alive and watching", 'Always watching']]);
+  }
 
   // get any instances
   const {instance} = await autoscaling.get();
