@@ -29,8 +29,10 @@ AWS.Lambda.mockImplementation(() => {
 
 // ssm
 const getParameters = getImplementation('getParameters');
+const getParameter = getImplementation('getParameter');
+const putParameter = getImplementation('putParameter');
 AWS.SSM.mockImplementation(() => {
-  return {getParameters};
+  return {getParameters, getParameter, putParameter};
 });
 
 module.exports = AWS;

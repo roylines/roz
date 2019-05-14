@@ -18,6 +18,33 @@ Array [
 ]
 `;
 
+exports[`poll handler should send greeting if first time 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Array [
+          "Hello. I'm alive and watching",
+          "Always watching",
+        ],
+      ],
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`poll handler should send greeting if first time 2`] = `
+Array [
+  Array [],
+]
+`;
+
 exports[`poll handler should set capacity to 0 if instances has been running for a long time 1`] = `
 Array [
   Array [],

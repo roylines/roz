@@ -11,3 +11,10 @@ resource "aws_ssm_parameter" "telegram_user" {
   type        = "SecureString"
   value       = "${var.telegram_user}"
 }
+
+resource "aws_ssm_parameter" "initialised" {
+  name        = "${local.name}-initialised"
+  description = "initialisation state"
+  type        = "String"
+  value       = "false"
+}
