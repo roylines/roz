@@ -18,7 +18,7 @@ const handle = async () => {
     const now = Date.now();
     const launched = new Date(instance.launched);
     // check to see if it's been open for more than 2 minutes
-    if (now - launched > 2 * 60000) {
+    if (now - launched > 1.5 * 60000) {
       await send([
         [`⏰ Bastion has been open for too long.`, `I'm closing it`],
       ]);

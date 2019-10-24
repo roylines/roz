@@ -1,7 +1,7 @@
 // package the node modules
 resource "null_resource" "roz" {
   // make it run every time
-  triggers {
+  triggers = {
     build_number = "${timestamp()}"
   }
 
@@ -31,7 +31,7 @@ resource "aws_lambda_function" "roz" {
   memory_size                    = "256"
   reserved_concurrent_executions = 1
 
-  environment = {
+  environment {
     variables = {
       NAME                       = "${local.name}"
       BASTION_AUTO_SCALING_GROUP = "${data.aws_autoscaling_group.bastion.name}"

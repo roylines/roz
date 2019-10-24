@@ -21,7 +21,7 @@ resource "aws_api_gateway_integration" "lambda" {
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = "${aws_lambda_function.roz.0.invoke_arn}"
+  uri                     = "${aws_lambda_function.roz.invoke_arn}"
 }
 
 // allow the lambda to be invoked by API gateway
